@@ -6,6 +6,7 @@ import ToTopButton from "../components/ToTopButton";
 import TrendingCommunity from "../components/TrendingCommunity";
 import HomeBox from "../components/HomeBox";
 import Input from "../components/Form/input";
+import SignIn from "../components/Form/signin";
 import { useAuth } from "../components/Auth/auth";
 // import { handleLogin, handleSignup, handleLogout } from "../utils/auth";
 
@@ -73,13 +74,14 @@ const Home = () => {
       {/* eslint-disable-next-line react/button-has-type */}
       {user && <button onClick={handleLogout}>Logout</button>}
 
-      <Nav />
-      <PostList />
-      <ToTopButton />
-      <TrendingCommunity />
-      <RecentPosts />
-      <HomeBox />
-      <Input>Email</Input>
+      {/* <Nav /> */}
+      {/* <PostList /> */}
+      {/* <ToTopButton /> */}
+      {/* <TrendingCommunity /> */}
+      {/* <RecentPosts /> */}
+      {/* <HomeBox /> */}
+      {/* <Input>Email</Input> */}
+      <SignIn />
     </div>
   );
 };
