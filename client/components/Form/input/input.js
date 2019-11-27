@@ -11,7 +11,8 @@ export default function input(props) {
       <input
         className="form__input"
         type="text"
-        placeholder="username"
+        /* eslint-disable-next-line react/destructuring-assignment */
+        placeholder={`${props.children}`}
         id="username"
       />
     </div>

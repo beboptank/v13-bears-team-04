@@ -79,7 +79,7 @@ const Home = () => {
       <TrendingCommunity />
       <RecentPosts />
       <HomeBox />
-      <Input />
+      <Input>Email</Input>
     </div>
   );
 };
