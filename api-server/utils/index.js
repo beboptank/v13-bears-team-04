@@ -1,7 +1,7 @@
 exports.getCookieOptions = () => ({
-  secure: process.env.NODE_ENV === "production",
-  httpOnly: true,
+  secure: process.env.COOKIE_SECURE,
+  httpOnly: process.env.COOKIE_HTTP_ONLY,
   expires: new Date(Date.now() + 86400000),
-  domain: process.env.DOMAIN_COOKIE,
-  sameSite: "None"
+  domain: process.env.COOKIE_DOMAIN,
+  sameSite: COOKIE_SAME_SITE
 });
