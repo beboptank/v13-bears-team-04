@@ -3,5 +3,5 @@ exports.getCookieOptions = () => ({
   httpOnly: process.env.COOKIE_HTTP_ONLY,
   expires: new Date(Date.now() + 86400000),
   domain: process.env.COOKIE_DOMAIN,
-  sameSite: COOKIE_SAME_SITE
+  sameSite: process.env.COOKIE_SAME_SITE
 });
