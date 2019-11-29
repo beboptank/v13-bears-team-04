@@ -28,7 +28,9 @@ async function getAllUsers(req, res) {
 async function handleVerification(req, res) {
   try {
     const { sid } = req.body;
-    console.log(req.cookies);
+    console.log("Req COOKIES: ", req.cookies);
+    console.log("Res COOKIES: ", res.cookies);
+    console.log("SID", sid);
     // find the session
     const session = await Session.findOne({ _id: sid });
     if (!session || !session._id) throw "User verification failed";
