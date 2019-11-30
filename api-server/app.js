@@ -36,6 +36,8 @@ const corsOpts = {
   allowedHeaders: "Content-Type, Authorization, X-Requested-With"
 };
 
+app.options("*", cors(corsOpts));
+
 // MIDDLEWARE
 app.use(cookieParser());
 app.use(cors(corsOpts));
