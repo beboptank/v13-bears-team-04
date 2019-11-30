@@ -30,7 +30,11 @@ mongoose
   })
   .catch(error => console.log("Database error: " + JSON.stringify(error)));
 
-const corsOpts = { origin: URL, credentials: true };
+const corsOpts = {
+  origin: URL,
+  credentials: true,
+  allowedHeaders: "Content-Type, Authorization, X-Requested-With"
+};
 
 // MIDDLEWARE
 app.use(cookieParser());
