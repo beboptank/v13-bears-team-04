@@ -29,6 +29,7 @@ async function handleVerification(req, res) {
   try {
     const { sid } = req.body;
     console.log("Req COOKIES: ", req.cookies);
+    console.log("Req COOKIES SID: ", req.cookies["sid"]);
     console.log("Res COOKIES: ", res.cookies);
     console.log("SID", sid);
     // find the session
@@ -48,6 +49,9 @@ async function handleVerification(req, res) {
 
 async function handleLogin(req, res) {
   try {
+    console.log("Req COOKIES: ", req.cookies);
+    console.log("Req COOKIES SID: ", req.cookies["sid"]);
+    console.log("Res COOKIES: ", res.cookies);
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     if (!user) return res.status(404).json({ message: "User not found" });
@@ -60,6 +64,7 @@ async function handleLogin(req, res) {
       // don't want to send the user's password to the client
       const { password, ...goodUser } = user._doc;
       const cookieOptions = getCookieOptions();
+      console.log("SESSION AND COOKIE", session._id, cookieOptions);
       res
         .status(200)
         .cookie("sid", session._id, cookieOptions)
