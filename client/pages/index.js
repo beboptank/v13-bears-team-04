@@ -20,6 +20,10 @@ const Home = () => {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
+      console.log(resp);
+      console.log({ ...resp });
+      console.log(resp.headers);
+      console.log({ ...resp.headers });
       const user = await resp.json();
       setUser(user);
     } catch (err) {
