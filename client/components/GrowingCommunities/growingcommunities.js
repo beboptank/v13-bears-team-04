@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./growingcommunities.scss";
 import Button from "../Button/button";
+import { useAuthPopup } from "../../contexts/authpopup";
+import { useUser } from "../../contexts/user";
 
 export default function growingcommunities() {
+  const { user } = useUser();
+  const { setAuthPopup } = useAuthPopup();
+
   const [subReddits, setGrowingSubReddit] = useState([
     { id: 1, name: "r/teslamotors", numOfMembers: 34000 },
     { id: 2, name: "r/ChoosingBeggars", numOfMembers: 30000 },
@@ -58,7 +63,7 @@ export default function growingcommunities() {
       <div className="row">
         <div className="col-2-of-4">
           <div className="growing-communties__join-btn">
-            <Button color="blue" inverted={false}>
+            <Button color="blue" handleClick={() => setAuthPopup("signup")}>
               <span>View All</span>
             </Button>
           </div>
