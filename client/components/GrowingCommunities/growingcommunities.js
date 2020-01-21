@@ -59,11 +59,31 @@ export default function growingcommunities() {
         text="View All"
         size="large"
       />
-      <div className="growing-communities__category-btns">
-        <Button />
-        <Button />
-        <Button />
-        <Button />
+      <div className="growing-communities__category-buttons">
+        <Button
+          cx="growing-communities__category-buttons__category-btn"
+          text="Sports"
+          size="small"
+          inverted
+        />
+        <Button
+          cx="growing-communities__category-buttons__category-btn"
+          text="News"
+          size="small"
+          inverted
+        />
+        <Button
+          cx="growing-communities__category-buttons__category-btn"
+          text="Gaming"
+          size="small"
+          inverted
+        />
+        <Button
+          cx="growing-communities__category-buttons__category-btn"
+          text="Aww"
+          size="small"
+          inverted
+        />
       </div>
     </div>
   );

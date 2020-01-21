@@ -60,4 +60,13 @@
       margin-left: 1rem;
     }
   }
+
+  &__category-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0 1rem 0;
+    &__category-btn {
+      padding: 0.5rem;
+    }
+  }
 }
