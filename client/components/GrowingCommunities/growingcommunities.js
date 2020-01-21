@@ -59,6 +59,12 @@ export default function growingcommunities() {
         text="View All"
         size="large"
       />
+      <div className="growing-communities__category-btns">
+        <Button />
+        <Button />
+        <Button />
+        <Button />
+      </div>
     </div>
   );
 }
