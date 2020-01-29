@@ -26,6 +26,7 @@
     "react-color": "^2.18.0",
     "react-device-detect": "^1.11.14",
     "react-dom": "16.11.0",
+    "react-inputs-validation": "^4.3.3",
     "react-select": "^3.0.8",
     "sass-resources-loader": "^2.0.1",
     "slate": "^0.57.1",
