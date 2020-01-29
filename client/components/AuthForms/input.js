@@ -5,6 +5,7 @@ const Input = props => {
   const {
     value,
     handleChange,
+    errorMessage,
     type,
     label,
     minLength,
@@ -14,6 +15,7 @@ const Input = props => {
 
   const id = `form__field__input--${label}`;
   const labelCx = clsx("form__field__label", { "required-dot": required });
+  // const showMessage = errorMessage;
 
   return (
     <div className="form__field">
@@ -23,6 +25,7 @@ const Input = props => {
         type={type}
         value={value}
         onChange={handleChange}
+        errorMessage={errorMessage}
         minLength={minLength}
         maxLength={maxLength}
         placeholder=""
@@ -33,6 +36,15 @@ const Input = props => {
       <label htmlFor={id} className={labelCx}>
         {label}
       </label>
+      <p
+        style={
+          props.errorMessage === ""
+            ? { visibility: "hidden" }
+            : { visibility: "visible" }
+        }
+      >
+        {props.errorMessage}
+      </p>
     </div>
   );
 };

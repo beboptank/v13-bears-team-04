@@ -25,7 +25,8 @@ export default function SignUp() {
 
   // console.log("" === false);
 
-  function handleEmailInput() {
+  function handleEmailInput(e) {
+    e.preventDefault();
     // Check whether the user input matches the email format: "aaa@{existing-domain-name}"
     let reg = new RegExp(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -37,8 +38,9 @@ export default function SignUp() {
     return reg.test(email) && domainlists.includes(userEmailDomain);
   }
 
-  function handlePasswordInput() {
+  function handlePasswordInput(e) {
     //Passwords must contain at least six characters, including uppercase, lowercase letters and numbers.
+    e.preventDefault();
 
     /*
       Contain at least 6 characters
@@ -52,7 +54,8 @@ export default function SignUp() {
     return reg.test(password);
   }
 
-  function handleUserNameInput() {
+  function handleUserNameInput(e) {
+    e.preventDefault();
     //contains number of letters between 3 and 20 nonwhitespace characters
 
     let reg = new RegExp(/^\s*(?:\S\s*){3,20}$/);
@@ -66,24 +69,34 @@ export default function SignUp() {
     // console.log(`Password is valid: ${handlePasswordInput()}`);
     // console.log(`Username is valid: ${handleUserNameInput()}`);
 
-    if (!handleEmailInput()) {
+    if (!handleEmailInput(e)) {
       setEmailError(
         "Please enter your email with existing domain name in format: whatever@example.com"
       );
+    } else {
+      setEmailError("");
     }
 
-    if (!handleUserNameInput()) {
+    if (!handleUserNameInput(e)) {
       setUsernameError("Username must be between 3 and 20 characters");
+    } else {
+      setUsernameError("");
     }
 
-    if (!handlePasswordInput()) {
+    if (!handlePasswordInput(e)) {
       setPasswordError(
         "Passwords must contain at least six characters, including uppercase, lowercase letters and numbers."
       );
+    } else {
+      setPasswordError("");
     }
     console.log(emailError, usernameError, passwordError);
 
-    if (handlePasswordInput && handleUserNameInput && handlePasswordInput) {
+    if (
+      handlePasswordInput(e) &&
+      handleUserNameInput(e) &&
+      handlePasswordInput(e)
+    ) {
       const message = await signup({ email, username, password });
       console.log(message);
 
@@ -103,8 +116,8 @@ export default function SignUp() {
           required
           label="Email"
           value={email}
-          // handleInput={handleInput(email)}
           handleChange={e => setEmail(e.target.value)}
+          errorMessage={emailError}
           type="email"
         />
         <Input
@@ -112,6 +125,7 @@ export default function SignUp() {
           label="Username"
           value={username}
           handleChange={e => setUsername(e.target.value)}
+          errorMessage={usernameError}
           type="text"
         />
         <Input
@@ -119,6 +133,7 @@ export default function SignUp() {
           label="Password"
           value={password}
           handleChange={e => setPassword(e.target.value)}
+          errorMessage={passwordError}
           type="password"
         />
         <Button
