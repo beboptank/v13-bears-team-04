@@ -62,12 +62,33 @@ export default function SignUp() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(`Email is valid: ${handleEmailInput()}`);
-    console.log(`Password is valid: ${handlePasswordInput()}`);
-    console.log(`Username is valid: ${handleUserNameInput()}`);
-    const message = await signup({ email, username, password });
-    console.log(message);
-    setAuthPopup("");
+    // console.log(`Email is valid: ${handleEmailInput()}`);
+    // console.log(`Password is valid: ${handlePasswordInput()}`);
+    // console.log(`Username is valid: ${handleUserNameInput()}`);
+
+    if (!handleEmailInput()) {
+      setEmailError(
+        "Please enter your email with existing domain name in format: whatever@example.com"
+      );
+    }
+
+    if (!handleUserNameInput()) {
+      setUsernameError("Username must be between 3 and 20 characters");
+    }
+
+    if (!handlePasswordInput()) {
+      setPasswordError(
+        "Passwords must contain at least six characters, including uppercase, lowercase letters and numbers."
+      );
+    }
+    console.log(emailError, usernameError, passwordError);
+
+    if (handlePasswordInput && handleUserNameInput && handlePasswordInput) {
+      const message = await signup({ email, username, password });
+      console.log(message);
+
+      setAuthPopup("");
+    }
   }
 
   return (
