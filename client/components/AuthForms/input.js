@@ -15,7 +15,7 @@ const Input = props => {
 
   const id = `form__field__input--${label}`;
   const labelCx = clsx("form__field__label", { "required-dot": required });
-  // const showMessage = errorMessage;
+  const showMessage = `form__field__input--error`;
 
   return (
     <div className="form__field">
@@ -37,6 +37,7 @@ const Input = props => {
         {label}
       </label>
       <p
+        className={showMessage}
         style={
           props.errorMessage === ""
             ? { visibility: "hidden" }

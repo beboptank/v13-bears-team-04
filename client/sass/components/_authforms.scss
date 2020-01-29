@@ -176,6 +176,15 @@
           }
         }
       }
+
+      &--error {
+        display: block;
+        width: 50rem;
+        color: $dark-orange;
+        font-family: IBMPlexSans, sans-serif;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
     }
 
     &__label {
