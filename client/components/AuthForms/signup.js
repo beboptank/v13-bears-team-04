@@ -5,6 +5,8 @@ import AuthFormLink from "./authformlink";
 import { useAuthPopup } from "../../contexts/authpopup";
 import { useUser } from "../../contexts/user";
 
+import { domainlists } from "./domainlists";
+
 export default function SignUp() {
   const { setAuthPopup } = useAuthPopup();
   const { signup } = useUser();
@@ -13,8 +15,24 @@ export default function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // domainlists.forEach(el => console.log(el.substring(0, el.length)));
+  // domainlists.forEach(el => console.log(el));
+  // console.log(domainlists);
+
+  function handleEmailInput() {
+    let reg = new RegExp(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+    let userEmailDomain = email.substring(email.indexOf("@") + 1);
+
+    // console.log(`Found the domain? : ${domainlists.includes(userEmailDomain)}`);
+
+    return reg.test(email) && domainlists.includes(userEmailDomain);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(handleEmailInput());
     const message = await signup({ email, username, password });
     console.log(message);
     setAuthPopup("");
@@ -32,10 +50,11 @@ export default function SignUp() {
           required
           label="Email"
           value={email}
+          // handleInput={handleInput(email)}
           handleChange={e => setEmail(e.target.value)}
           type="email"
         />
-        <Input
+        {/* <Input
           required
           label="Username"
           value={username}
@@ -48,7 +67,7 @@ export default function SignUp() {
           value={password}
           handleChange={e => setPassword(e.target.value)}
           type="password"
-        />
+        /> */}
         <Button
           type="submit"
           text="Sign Up"
