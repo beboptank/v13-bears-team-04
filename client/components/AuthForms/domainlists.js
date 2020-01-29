@@ -1,4 +1,5 @@
 // Got this list from https://github.com/mailcheck/mailcheck/wiki/List-of-Popular-Domains
+// **** Popular Email Domains that exists ****
 
 export const domainlists = [
   /* Default domains included */

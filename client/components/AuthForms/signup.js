@@ -20,6 +20,7 @@ export default function SignUp() {
   // console.log(domainlists);
 
   function handleEmailInput() {
+    // Check whether the user input matches the email format: "aaa@{existing-domain-name}"
     let reg = new RegExp(
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
@@ -30,9 +31,34 @@ export default function SignUp() {
     return reg.test(email) && domainlists.includes(userEmailDomain);
   }
 
+  function handlePasswordInput() {
+    //Passwords must contain at least six characters, including uppercase, lowercase letters and numbers.
+
+    /*
+      Contain at least 6 characters
+      Contain at least 1 number
+      Contain at least 1 lowercase character (a-z)
+      Contain at least 1 uppercase character (A-Z)
+      Contains only 0-9a-zA-Z
+    */
+    let reg = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/);
+
+    return reg.test(password);
+  }
+
+  function handleUserNameInput() {
+    //contains number of letters between 3 and 20 nonwhitespace characters
+
+    let reg = new RegExp(/^\s*(?:\S\s*){3,20}$/);
+
+    return reg.test(username);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(handleEmailInput());
+    console.log(`Email is valid: ${handleEmailInput()}`);
+    console.log(`Password is valid: ${handlePasswordInput()}`);
+    console.log(`Username is valid: ${handleUserNameInput()}`);
     const message = await signup({ email, username, password });
     console.log(message);
     setAuthPopup("");
@@ -54,7 +80,7 @@ export default function SignUp() {
           handleChange={e => setEmail(e.target.value)}
           type="email"
         />
-        {/* <Input
+        <Input
           required
           label="Username"
           value={username}
@@ -67,7 +93,7 @@ export default function SignUp() {
           value={password}
           handleChange={e => setPassword(e.target.value)}
           type="password"
-        /> */}
+        />
         <Button
           type="submit"
           text="Sign Up"
