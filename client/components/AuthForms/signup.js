@@ -15,9 +15,15 @@ export default function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   // domainlists.forEach(el => console.log(el.substring(0, el.length)));
   // domainlists.forEach(el => console.log(el));
   // console.log(domainlists);
+
+  // console.log("" === false);
 
   function handleEmailInput() {
     // Check whether the user input matches the email format: "aaa@{existing-domain-name}"
