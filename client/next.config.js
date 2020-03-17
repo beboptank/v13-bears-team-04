@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const withSass = require("@zeit/next-sass");
+
 require("dotenv").config();
 
 const globalSass = [
@@ -8,9 +10,6 @@ const globalSass = [
 ];
 
 module.exports = withSass({
-  env: {
-    API_URL: process.env.API_URL,
-  },
   // this makes our SASS variables global eliminating the
   // need to import the files in other .scss files
   webpack: config => {
